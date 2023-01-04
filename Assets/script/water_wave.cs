@@ -81,8 +81,9 @@ public class water_wave : MonoBehaviour
 
             v += 2;
         }
-        //삼각형
-        int[] traingles = new int[(columns.Count - 1) * 6];
+
+        //삼각형 매쉬
+        int[] traingles = new int[(columns.Count-1) * 6];
         int t = 0;
         v = 0;
         for (int i = 0; i < columns.Count -1; i++)
@@ -126,8 +127,8 @@ public class water_wave : MonoBehaviour
 
         public void update_column()
         {
-            // a는 가속도 = f=ma 
-            float a = k / m * (height * target_height);
+            // a는 가속도 = f=ma = f=-km
+            float a = -k / m * (height * target_height);
             velocity += a; //가속도에 속도 계산
             velocity -= drag * velocity;// 공기저항
             height += velocity; //높이에 속도 더함
