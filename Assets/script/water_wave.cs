@@ -100,6 +100,12 @@ public class water_wave : MonoBehaviour
 
         mesh.vertices = vertices;
         mesh.triangles = traingles;
+
+        mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
+        mesh.Optimize();
+
+        mesh_filter.mesh = mesh;
     }
 
 
