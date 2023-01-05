@@ -13,6 +13,7 @@ public class water_wave : MonoBehaviour
     public float m = 1;
     public float drag = 0.025f; //저항
     public float spread = 0.025f; //얼마나 튈지
+    public float power = 1f; //파워
 
     private List<water_column> columns = new List<water_column>(); //리스트로 만듬
 
@@ -31,6 +32,26 @@ public class water_wave : MonoBehaviour
         for (int i = 0; i < column_count+1; i++)
         {
             columns.Add(new water_column(i * space - width * 0.5f, height, k, m, drag));
+        }
+    }
+
+    internal int? WorldToColumn(Vector2 position)
+    {
+        float space = width / column_count;
+        int result = Mathf.RoundToInt((position.x + width*0.5f) / space);
+        if(result >= columns.Count || result < 0)
+        {
+            return null;
+        }
+        return result;
+    }
+
+    private void Update()
+    {
+        int? column = WorldToColumn(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if (Input.GetMouseButtonDown(0) && column.HasValue)
+        {
+            columns[column.Value].velocity = power;
         }
     }
 
@@ -55,7 +76,7 @@ public class water_wave : MonoBehaviour
             if(i<columns.Count - 1)
             {
                 right_deltas[i] = (columns[i].height - columns[i + 1].height) * spread;
-                columns[i+1].velocity += left_deltas[i];
+                columns[i+1].velocity += right_deltas[i];
             }
         }
         for (int i = 0; i < columns.Count; i++)
