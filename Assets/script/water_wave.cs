@@ -6,9 +6,9 @@ public class water_wave : MonoBehaviour
 {
     public MeshFilter mesh_filter;
 
-    public int column_count; // 몇개만들지
+    public int column_count =10; // 몇개만들지
     public float width = 2f; //물표면 너비
-    public float height = 2f; //물표면 높이
+    public float height = 1f; //물표면 높이
     public float k = 0.025f;  //용수철 상수
     public float m = 1;
     public float drag = 0.025f; //저항
@@ -83,24 +83,24 @@ public class water_wave : MonoBehaviour
         }
 
         //삼각형 매쉬
-        int[] traingles = new int[(columns.Count-1) * 6];
+        int[] triangles = new int[(columns.Count-1) * 6];
         int t = 0;
         v = 0;
         for (int i = 0; i < columns.Count -1; i++)
         {
-            traingles[t] = v;
-            traingles[t + 1] = v + 2;
-            traingles[t + 2] = v + 1;
-            traingles[t + 3] = v + 1;
-            traingles[t + 4] = v + 2;
-            traingles[t + 5] = v + 3;
+            triangles[t] = v;
+            triangles[t + 1] = v + 2;
+            triangles[t + 2] = v + 1;
+            triangles[t + 3] = v + 1;
+            triangles[t + 4] = v + 2;
+            triangles[t + 5] = v + 3;
 
             v += 2;
             v += 6;
         }
 
         mesh.vertices = vertices;
-        mesh.triangles = traingles;
+        mesh.triangles = triangles;
 
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
@@ -119,6 +119,7 @@ public class water_wave : MonoBehaviour
         public water_column(float x_pos, float target_height, float k, float m, float drag)
         {
             this.x_pos = x_pos;
+            this.height = target_height;
             this.target_height = target_height;
             this.k = k;
             this.m = m;
