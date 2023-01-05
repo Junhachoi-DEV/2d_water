@@ -83,7 +83,7 @@ public class water_wave : MonoBehaviour
         }
 
         //»ï°¢Çü ¸Å½¬
-        int[] triangles = new int[(columns.Count-1) * 6];
+        int[] triangles = new int[(columns.Count - 1) * 6];
         int t = 0;
         v = 0;
         for (int i = 0; i < columns.Count -1; i++)
@@ -96,7 +96,7 @@ public class water_wave : MonoBehaviour
             triangles[t + 5] = v + 3;
 
             v += 2;
-            v += 6;
+            t += 6;
         }
 
         mesh.vertices = vertices;
