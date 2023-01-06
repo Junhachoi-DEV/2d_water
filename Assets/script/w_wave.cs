@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class w_wave : MonoBehaviour
 {
-	public float Position, Velocity, Height, TargetHeight;
+    public Transform next_circle;
+	public DistanceJoint2D Spring;
 
-	public void Update()
-	{
-		const float k = 0.025f; // adjust this value to your liking 
-		float x = Height - TargetHeight;
-		float acceleration = -k * x;
-		Position += Velocity;
-		Velocity += acceleration;
-	}
-
+    private void Start()
+    {
+        Spring = GetComponent<DistanceJoint2D>();
+        Spring.connectedAnchor = next_circle.transform.position;
+    }
+    private void FixedUpdate()
+    {
+        Spring.connectedAnchor = next_circle.transform.position;
+    }
 }
