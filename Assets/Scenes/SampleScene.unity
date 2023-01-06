@@ -621,8 +621,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1022209964}
-  - component: {fileID: 1022209963}
   - component: {fileID: 1022209962}
+  - component: {fileID: 1022209963}
   m_Layer: 0
   m_Name: line_rope
   m_TagString: Untagged
@@ -644,6 +644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1022209963}
   segment_count: 15
+  constraint_loop: 15
   segment_length: 0.1
   rope_width: 0.1
   gravity: {x: 0, y: -9.81}
@@ -669,7 +670,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

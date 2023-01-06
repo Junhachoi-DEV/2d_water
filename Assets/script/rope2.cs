@@ -7,6 +7,7 @@ public class rope2 : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public int segment_count =15;
+    public int constraint_loop = 15;
     public float segment_length =0.1f;
     public float rope_width=0.1f;
     public Vector2 gravity = new Vector2(0f, -9.81f); //중력
@@ -16,6 +17,7 @@ public class rope2 : MonoBehaviour
 
 
     List<segment> segments = new List<segment>();
+
 
     private void Reset()
     {
@@ -31,12 +33,19 @@ public class rope2 : MonoBehaviour
             segment_pos.y -= segment_length;
         }
     }
+
+
     private void FixedUpdate()
     {
         update_segments();
-        apply_constraint();
+        for (int i = 0; i < constraint_loop; i++)
+        {
+            apply_constraint();
+            Ad_just_collision();
+        }
         draw_rope();
     }
+
 
     void draw_rope()
     {
@@ -80,6 +89,22 @@ public class rope2 : MonoBehaviour
             {
                 segments[i].current_pos -= movement * 0.5f;
                 segments[i + 1].current_pos += movement * 0.5f;
+            }
+        }
+    }
+    //출동 함수
+    void Ad_just_collision()
+    {
+        for (int i = 0; i < segments.Count; i++)
+        {
+            Vector2 dir = segments[i].current_pos - segments[i].previous_pos;
+            //레이캐스트에서 원에서 쏘는 함수가 있다.!
+            RaycastHit2D hit = Physics2D.CircleCast(segments[i].current_pos, rope_width * 0.5f, dir.normalized, 0f);
+
+            if (hit)
+            {
+                segments[i].current_pos = hit.point + hit.normal * rope_width * 0.5f;
+                segments[i].previous_pos = segments[i].current_pos;
             }
         }
     }
