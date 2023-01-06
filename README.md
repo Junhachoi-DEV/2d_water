@@ -14,7 +14,7 @@ https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=seolgoons&lo
 https://www.youtube.com/watch?v=uUjeR2tA5aU  
 https://gamedevelopment.tutsplus.com/tutorials/make-a-splash-with-dynamic-2d-water-effects--gamedev-236  
 
-로프
+로프  
 https://www.youtube.com/watch?v=Ksw1JI7r7WQ  
 https://www.youtube.com/watch?v=1ktCxcQFyfM  
 
