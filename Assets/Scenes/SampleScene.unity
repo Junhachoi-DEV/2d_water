@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh_filter: {fileID: 1457353384}
-  column_count: 30
+  column_count: 100
   width: 10
   height: 5
   k: 0.025

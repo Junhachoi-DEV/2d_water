@@ -13,7 +13,7 @@ public class water_wave : MonoBehaviour
     public float m = 1;
     public float drag = 0.025f; //저항
     public float spread = 0.025f; //얼마나 튈지
-    public float power = 1f; //파워
+    public float power = -1f; //파워
 
     private List<water_column> columns = new List<water_column>(); //리스트로 만듬
 
@@ -25,7 +25,7 @@ public class water_wave : MonoBehaviour
 
 
 
-    void setup()
+    private void setup()
     {
         columns.Clear();
         float space = width / column_count;
@@ -150,7 +150,7 @@ public class water_wave : MonoBehaviour
         public void update_column()
         {
             // a는 가속도 = f=ma = f=-km
-            float a = -k / m * (height * target_height);
+            float a = -k / m * (height - target_height);
             velocity += a; //가속도에 속도 계산
             velocity -= drag * velocity;// 공기저항
             height += velocity; //높이에 속도 더함
