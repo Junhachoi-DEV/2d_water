@@ -936,7 +936,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2aa098f681646ff43a1863500c1e6e00, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1010,7 +1010,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -1540,7 +1540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1670850347
 Rigidbody2D:
   serializedVersion: 4
@@ -1946,7 +1946,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &2085553818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,3 +1959,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca0c4bdcb4af7547b85d94b3e4a9c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  j_f: 10
+  speed: 10

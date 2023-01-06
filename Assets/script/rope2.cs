@@ -14,8 +14,9 @@ public class rope2 : MonoBehaviour
 
     [Space(10f)]
     public Transform start_transform;
+    public Transform end_transform;
 
-
+    public bool is_collide;
     List<segment> segments = new List<segment>();
 
 
@@ -73,6 +74,7 @@ public class rope2 : MonoBehaviour
     void apply_constraint()
     {
         segments[0].current_pos = start_transform.position;
+        segments[segments.Count - 1].current_pos = end_transform.position;
         for (int i = 0; i < segments.Count-1; i++)
         {
             
@@ -85,6 +87,10 @@ public class rope2 : MonoBehaviour
             {
                 segments[i + 1].current_pos += movement;
             }
+            else if (i == segments.Count -2)
+            {
+                segments[i].current_pos -= movement;
+            }
             else
             {
                 segments[i].current_pos -= movement * 0.5f;
@@ -95,6 +101,10 @@ public class rope2 : MonoBehaviour
     //출동 함수
     void Ad_just_collision()
     {
+        if (!is_collide)
+        {
+            return;
+        }
         for (int i = 0; i < segments.Count; i++)
         {
             Vector2 dir = segments[i].current_pos - segments[i].previous_pos;
